@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Starry Night Sky</title>
+  <style>
+    html {
+        /* --shotaPurp: #2a0c4e;
+        --shotaPurpf0: #2a0c4ef0;
+        --shotaPurp80: #2a0c4e80;
+        --shotaBlueShade: #355f6a;
+        --shotaBlueShadef0: #355f6af0;
+        --shotaBlueShade80: #335f6a80;
+        --shotaPrussian: #283346;
+        --shotaPrussianf0: #283346f0;
+        --shotaPrussian80: #28334680;
+        --shotaOrange: #e9772c;
+        --shotaOrangef0: #e9772cf0;
+        --shotaOrange80: #e9772c80;
+        --shotaRobin: #4ec9c3;
+        --shotaRobinf0: #4ec9c3f0;
+        --shotaRobine0: #4ec9c3e0;
+        --shotaRobin80: #4ec9c380;
+        --shotaRobin40: #4ec9c340;
+        --shotaRobin20: #4ec9c320;
+        --shotaCadet: #9ea3ad;
+        --shotaCadetf0: #9ea3adf0;
+        --shotaCadet80: #9ea3ad80;
+        --shotaPowder: #f6faf7;
+        --shotaPowderf0: #f6faf7f0;
+        --shotaPowder80: #f6faf780;
+        --onyxGray: #222222;
+        --onyxGrayf0: #222222f0;
+        --onyxGray80: #22222280;
+        --steelGray: #333333;
+        --steelGrayf0: #333333f0;
+        --steelGray80: #33333380;
+        --linearBrightPurple: #c261fe;
+        --linearBrightPurplef0: #c261fef0;
+        --linearBrightPurple80: #c261fe80;
+        --linearDullPurple: rgb(53, 42, 79);
+        --rgbTest: rgba(9, 14, 2, 0.801);
+        --hexTest: #030227; */
+    }
+    body {
+      background-color: rgb(10, 9, 26);
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hide scrollbars */
+      pointer-events: none;
+    }
+
+    .horizon {
+        background-color: linear-gradient(to top, #4ec9c380, 10%, #00000000);
+    }
+
+    .box {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0; /* Initially hidden */
+      border-radius: 100%;
+    }
+
+    .stars1a {
+      width: 1px;
+      height: 1px;
+      background: none;
+      animation: moveStars 50s linear infinite;
+    }
+
+    .stars1b {
+      width: 1px;
+      height: 1px;
+      background: none;
+      animation: moveStars 90s linear infinite;
+    }
+
+    .stars2a {
+      width: 2px;
+      height: 2px;
+      background: none;
+      animation: moveStars 120s linear infinite;
+    }
+
+    .stars2b {
+      width: 2px;
+      height: 2px;
+      background: none;
+      animation: moveStars 140s linear infinite;
+    }
+
+    .stars3a {
+      width: 3px;
+      height: 3px;
+      background: none;
+      animation: moveStars 245s linear infinite;
+    }
+
+    .stars3b {
+      width: 3px;
+      height: 3px;
+      background: none;
+      animation: moveStars 245s linear infinite;
+    }
+
+    .stars4a {
+      width: 5px;
+      height: 5px;
+      background: none;
+      animation: moveStars 375s linear infinite;
+    }
+
+    .stars4b {
+      width: 14px;
+      height: 14px;
+      background: none;
+      animation: moveStars 425s linear infinite;
+    }
+
+    .box-duplicate {
+      animation-delay: -20s;
+    }
+
+    @keyframes moveStars {
+        0% {
+            opacity: 0;
+            transform: translateY(200vh); /* Move from bottom of the screen */
+        }
+        2%, 23% {
+            opacity: 1; /* Fade in */
+        }
+        25% {
+            opacity: 0;
+        }
+        27%, 48% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        52%, 73% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 0;
+        }
+        77%, 98% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(0vh); /* Reach top of the screen */
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="background horizon"></div>
+  <div class="box stars1a"></div>
+  <div class="box stars1b"></div>
+  <div class="box stars2a"></div>
+  <div class="box stars2b"></div>
+  <div class="box stars3a"></div>
+  <div class="box stars3b"></div>
+  <div class="box stars4a"></div>
+  <div class="box stars4b"></div>
+
+  <!-- Duplicate set of stars -->
+  <div class="box stars1a box-duplicate"></div>
+  <div class="box stars1b box-duplicate"></div>
+  <div class="box stars2a box-duplicate"></div>
+  <div class="box stars2b box-duplicate"></div>
+  <div class="box stars3a box-duplicate"></div>
+  <div class="box stars3b box-duplicate"></div>
+  <div class="box stars4a box-duplicate"></div>
+  <div class="box stars4b box-duplicate"></div>
+
+  <script>
+    const generateBoxShadows = (className, size, count, color) => {
+      const box = document.querySelector(`.${className}`);
+      const boxShadow = [];
+      for (let i = 0; i < count; i++) {
+        const left = Math.random() * window.innerWidth;
+        const top = Math.random() * window.innerHeight * 3 - window.innerHeight; /* Adjust star the top position */
+        boxShadow.push(`${left}px ${top}px 0 ${size}px ${color}`);
+      }
+      box.style.boxShadow = boxShadow.join(', ');
+    };
+
+    generateBoxShadows('stars1a', 1, 5000, 'rgba(211, 211, 211, 0.3)'); // small gray stars | 800
+    generateBoxShadows('stars1b', 1, 5000, 'rgba(135, 88, 245, 0.4)'); // small purple stars | 800
+    generateBoxShadows('stars2a', 2, 500, 'rgba(255, 255, 255, 0.3)'); // medium gray stars | 120
+    generateBoxShadows('stars2b', 2, 500, 'rgba(240, 199, 172, 0.3)'); // medium orange stars | 140
+    generateBoxShadows('stars3a', 3, 200, 'rgba(255, 255, 255, 1)'); // medium-large white stars | 20
+    generateBoxShadows('stars3b', 3, 100, 'rgba(236, 196, 248, 1)'); // medium-large pink stars | 40
+    generateBoxShadows('stars4a', 5, 40, 'rgba(4, 17, 129, 0.3)'); // large blue planets | 12
+    generateBoxShadows('stars4b', 14, 15, 'rgba(0, 0, 0, 0.3)'); // very large black Planets | 5
+  </script>
+</body>
+</html>
