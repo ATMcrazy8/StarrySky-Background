@@ -4,7 +4,8 @@
   <title>Starry Night Sky</title>
   <style>
     html {
-        /* --shotaPurp: #2a0c4e;
+        /* Branded Nagios colors: */ 
+        /*--shotaPurp: #2a0c4e;
         --shotaPurpf0: #2a0c4ef0;
         --shotaPurp80: #2a0c4e80;
         --shotaBlueShade: #355f6a;
@@ -41,95 +42,95 @@
         --rgbTest: rgba(9, 14, 2, 0.801);
         --hexTest: #030227; */
     }
-    body {
-      background-color: rgb(10, 9, 26);
-      margin: 0;
-      padding: 0;
+    body { /* This may need to be edited to suite the needs of a given page */
+      background-color: rgb(10, 9, 26); /* Background color */
+      margin: 0; /* Removing default margin */
+      padding: 0; /* Removing default padding */
       overflow: hidden; /* Hide scrollbars */
-      pointer-events: none;
+      pointer-events: none; /* Remove unwanted mouse-over pointers */
     }
 
-    .horizon {
-        background-color: linear-gradient(to top, #4ec9c380, 10%, #00000000);
+    .horizon { /* NOT WORKING YET */
+      /* Background-color: linear-gradient(to top, #4ec9c380, 10%, #00000000); */
     }
 
-    .box {
-      content: "";
-      position: absolute;
+
+    .box { /* Applied to each div that is part of the background */
+      position: absolute; /* Breaks divs out of body positioning */
       pointer-events: none;
       opacity: 0; /* Initially hidden */
-      border-radius: 100%;
+      border-radius: 100%; /* Curves the divs into circles. can use 50% and get same results */
     }
 
-    .stars1a {
-      width: 1px;
-      height: 1px;
-      background: none;
-      animation: moveStars 50s linear infinite;
+    .stars1a { /* Small gray stars */
+      width: 1px; /* Set width of the div */
+      height: 1px; /* Set height of the div */
+      background: none; /* Removed background from the actual divs */
+      animation: moveStars 50s linear infinite; /* Apply div animation | Duration of the animation (lower number speeds up movement) | keep same speed throughout animation | loop infinitely) */
     }
 
-    .stars1b {
+    .stars1b { /* Small purple stars */
       width: 1px;
       height: 1px;
       background: none;
       animation: moveStars 90s linear infinite;
     }
 
-    .stars2a {
+    .stars2a { /* Medium gray stars */
       width: 2px;
       height: 2px;
       background: none;
       animation: moveStars 120s linear infinite;
     }
 
-    .stars2b {
+    .stars2b { /* Medium orange stars */
       width: 2px;
       height: 2px;
       background: none;
       animation: moveStars 140s linear infinite;
     }
 
-    .stars3a {
+    .stars3a { /* Medium-Large white stars */
       width: 3px;
       height: 3px;
       background: none;
       animation: moveStars 245s linear infinite;
     }
 
-    .stars3b {
+    .stars3b { /* Medium-Large pink stars */
       width: 3px;
       height: 3px;
       background: none;
       animation: moveStars 245s linear infinite;
     }
 
-    .stars4a {
+    .stars4a { /* Large blue planets */
       width: 5px;
       height: 5px;
       background: none;
       animation: moveStars 375s linear infinite;
     }
 
-    .stars4b {
+    .stars4b { /* Very large black planets */
       width: 14px;
       height: 14px;
       background: none;
       animation: moveStars 425s linear infinite;
     }
 
-    .box-duplicate {
+    .box-duplicate { /* Added duplicates that stagger animation so that the screen is always moving. This may not be working properly*/
       animation-delay: -20s;
     }
 
-    @keyframes moveStars {
-        0% {
-            opacity: 0;
-            transform: translateY(200vh); /* Move from bottom of the screen */
+    @keyframes moveStars { /* Creating the moveStars animation */
+        0% { /* Beginning of animation */
+            opacity: 0; /* Initially invisible */
+            transform: translateY(200vh); /* Start at 2x bottom of the viewport */
         }
-        2%, 23% {
+        2%, 23% { /* Do not change over this duration of the animation period  */
             opacity: 1; /* Fade in */
         }
-        25% {
+        25% { /* Fade to 0 opacity from 23%-25%, and back to 1 opacity from 25%-27% */
             opacity: 0;
         }
         27%, 48% {
@@ -149,21 +150,21 @@
         }
         100% {
             opacity: 0;
-            transform: translateY(0vh); /* Reach top of the screen */
+            transform: translateY(0vh); /* Reach top of the screen, fade out */
         }
     }
   </style>
 </head>
 <body>
-  <div class="background horizon"></div>
-  <div class="box stars1a"></div>
-  <div class="box stars1b"></div>
-  <div class="box stars2a"></div>
-  <div class="box stars2b"></div>
-  <div class="box stars3a"></div>
-  <div class="box stars3b"></div>
-  <div class="box stars4a"></div>
-  <div class="box stars4b"></div>
+  <div class="background horizon"></div> <!-- Not yet implemented properly -->
+  <div class="box stars1a"></div> <!-- Small gray stars -->
+  <div class="box stars1b"></div> <!-- Small purple stars -->
+  <div class="box stars2a"></div> <!-- Medium gray stars -->
+  <div class="box stars2b"></div> <!-- Medium orange stars -->
+  <div class="box stars3a"></div> <!-- Medium-large white stars -->
+  <div class="box stars3b"></div> <!-- Medium-Large pink stars -->
+  <div class="box stars4a"></div> <!-- Large blue planets -->
+  <div class="box stars4b"></div> <!-- Very large black planets -->
 
   <!-- Duplicate set of stars -->
   <div class="box stars1a box-duplicate"></div>
@@ -177,24 +178,25 @@
 
   <script>
     const generateBoxShadows = (className, size, count, color) => {
-      const box = document.querySelector(`.${className}`);
-      const boxShadow = [];
-      for (let i = 0; i < count; i++) {
-        const left = Math.random() * window.innerWidth;
-        const top = Math.random() * window.innerHeight * 3 - window.innerHeight; /* Adjust star the top position */
-        boxShadow.push(`${left}px ${top}px 0 ${size}px ${color}`);
+      const box = document.querySelector(`.${className}`); /* grab anything with the class of 'box' */
+      const boxShadow = []; /* Create an empty array */
+      for (let i = 0; i < count; i++) { /* iterate throughout each of the following: */
+        const left = Math.random() * window.innerWidth; /* set the horixontal offset of the box-shadows to be a random width inside the viewport*/
+        const top = Math.random() * window.innerHeight * 3 - window.innerHeight; /* Adjust star box-shadow top position randomly within 3x of the viewport*/
+        boxShadow.push(`${left}px ${top}px 0 ${size}px ${color}`); /* Iterate over the dimensions of each box shadow */
       }
-      box.style.boxShadow = boxShadow.join(', ');
+      box.style.boxShadow = boxShadow.join(', '); /* Remove the very last comma and space from a set of box-shadows*/
     };
 
-    generateBoxShadows('stars1a', 1, 700, 'rgba(211, 211, 211, 0.3)'); // small gray stars | 800
-    generateBoxShadows('stars1b', 1, 700, 'rgba(135, 88, 245, 0.4)'); // small purple stars | 800
-    generateBoxShadows('stars2a', 1, 100, 'rgba(255, 255, 255, 0.3)'); // medium gray stars | 120
-    generateBoxShadows('stars2b', 1, 100, 'rgba(240, 199, 172, 0.3)'); // medium orange stars | 140
-    generateBoxShadows('stars3a', 1, 40, 'rgba(255, 255, 255, 1)'); // medium-large white stars | 20
-    generateBoxShadows('stars3b', 1, 30, 'rgba(236, 196, 248, 1)'); // medium-large pink stars | 40
-    generateBoxShadows('stars4a', 5, 15, 'rgba(4, 17, 129, 0.3)'); // large blue planets | 12
-    generateBoxShadows('stars4b', 10, 5, 'rgba(0, 0, 0, 0.3)'); // very large black Planets | 5
+
+    generateBoxShadows('stars1a', 1, 700, 'rgba(211, 211, 211, 0.3)'); // small gray stars | original number of stars: 800
+    generateBoxShadows('stars1b', 1, 700, 'rgba(135, 88, 245, 0.4)'); // small purple stars | original number of stars: 800
+    generateBoxShadows('stars2a', 1, 100, 'rgba(255, 255, 255, 0.3)'); // medium gray stars | original number of stars: 120
+    generateBoxShadows('stars2b', 1, 100, 'rgba(240, 199, 172, 0.3)'); // medium orange stars | original number of stars: 140
+    generateBoxShadows('stars3a', 1, 40, 'rgba(255, 255, 255, 1)'); // medium-large white stars | original number of stars: 20
+    generateBoxShadows('stars3b', 1, 30, 'rgba(236, 196, 248, 1)'); // medium-large pink stars | original number of stars: 40
+    generateBoxShadows('stars4a', 5, 15, 'rgba(4, 17, 129, 0.3)'); // large blue planets | original number of planets: 12
+    generateBoxShadows('stars4b', 10, 5, 'rgba(0, 0, 0, 0.3)'); // very large black planets | original number of planets: 5
   </script>
 </body>
 </html>
