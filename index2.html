@@ -54,6 +54,7 @@
     }
 
     .box {
+      content: "";
       position: absolute;
       pointer-events: none;
       opacity: 0; /* Initially hidden */
@@ -186,14 +187,14 @@
       box.style.boxShadow = boxShadow.join(', ');
     };
 
-    generateBoxShadows('stars1a', 1, 5000, 'rgba(211, 211, 211, 0.3)'); // small gray stars | 800
-    generateBoxShadows('stars1b', 1, 5000, 'rgba(135, 88, 245, 0.4)'); // small purple stars | 800
-    generateBoxShadows('stars2a', 2, 500, 'rgba(255, 255, 255, 0.3)'); // medium gray stars | 120
-    generateBoxShadows('stars2b', 2, 500, 'rgba(240, 199, 172, 0.3)'); // medium orange stars | 140
-    generateBoxShadows('stars3a', 3, 200, 'rgba(255, 255, 255, 1)'); // medium-large white stars | 20
-    generateBoxShadows('stars3b', 3, 100, 'rgba(236, 196, 248, 1)'); // medium-large pink stars | 40
-    generateBoxShadows('stars4a', 5, 40, 'rgba(4, 17, 129, 0.3)'); // large blue planets | 12
-    generateBoxShadows('stars4b', 14, 15, 'rgba(0, 0, 0, 0.3)'); // very large black Planets | 5
+    generateBoxShadows('stars1a', 1, 700, 'rgba(211, 211, 211, 0.3)'); // small gray stars | 800
+    generateBoxShadows('stars1b', 1, 700, 'rgba(135, 88, 245, 0.4)'); // small purple stars | 800
+    generateBoxShadows('stars2a', 1, 100, 'rgba(255, 255, 255, 0.3)'); // medium gray stars | 120
+    generateBoxShadows('stars2b', 1, 100, 'rgba(240, 199, 172, 0.3)'); // medium orange stars | 140
+    generateBoxShadows('stars3a', 1, 40, 'rgba(255, 255, 255, 1)'); // medium-large white stars | 20
+    generateBoxShadows('stars3b', 1, 30, 'rgba(236, 196, 248, 1)'); // medium-large pink stars | 40
+    generateBoxShadows('stars4a', 5, 15, 'rgba(4, 17, 129, 0.3)'); // large blue planets | 12
+    generateBoxShadows('stars4b', 10, 5, 'rgba(0, 0, 0, 0.3)'); // very large black Planets | 5
   </script>
 </body>
 </html>
